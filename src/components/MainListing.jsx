@@ -27,7 +27,7 @@ const MainListing = () => {
   }, [pageNum])
 
   const nextPage = () => {
-    if (pageNum > 168){
+    if (pageNum >= 168){
       setPageNum(180)
       toast.error("Can't go beyond last page")
     }
@@ -60,7 +60,7 @@ const MainListing = () => {
             <p className="text-gray-600">Discover amazing deals on quality products</p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
+          <div className="grid sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12">
             {products.map((product) => (
               <Card  key={product.id}>
                 <div className="w-full h-64 overflow-hidden rounded-lg mb-4 bg-gray-100">
