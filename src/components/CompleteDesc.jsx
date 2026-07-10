@@ -29,8 +29,25 @@ const CompleteDesc = () => {
     getProducts();
   }, [id])
 
-  const nextPage = () => navigate(`/desc/${Number(id) + 1}`);
-  const prevPage = () => navigate(`/desc/${Number(id) - 1}`); 
+  const nextPage = (id) => {
+    if (id >= 194) {
+      navigate(`/desc/194`);
+      toast.error("End of Page")
+    }
+    else {
+      navigate(`/desc/${Number(id) + 1}`);
+    }
+  }
+  
+  const prevPage = (id) => {
+    if (id <= 1) {
+      navigate(`/desc/1`);
+      toast.error("Can't go beyond 1st product")
+    }
+    else {
+      navigate(`/desc/${Number(id) - 1}`); 
+    }
+  }
 
   useEffect(() => {
   if (product) {
@@ -294,9 +311,9 @@ const CompleteDesc = () => {
           </div>
         {/* ))} */}
         <div className="fixed bottom-4 right-0  transform -translate-x-1/2 flex gap-4">
-        <Button onClick={prevPage}
+        <Button onClick={() => prevPage(id)}
         name={"Prev"}/>
-        <Button onClick={nextPage}
+        <Button onClick={() => nextPage(id)}
         name={"Next"}/>
         </div>
       </div>

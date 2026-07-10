@@ -3,6 +3,7 @@ import Card from "./Card";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import Star from "./Star";
+import toast from "react-hot-toast";
 
 
 const MainListing = () => {
@@ -16,7 +17,7 @@ const MainListing = () => {
   useEffect(() => {
 
     async function getProducts () {
-      const response = await fetch(`https://dummyjson.com/products/?limit=28&&skip=${pageNum}`)
+      const response = await fetch(`https://dummyjson.com/products/?limit=28&skip=${pageNum}`)
 
       const data = await response.json()
 
@@ -28,6 +29,7 @@ const MainListing = () => {
   const nextPage = () => {
     if (pageNum > 168){
       setPageNum(180)
+      toast.error("Can't go beyond last page")
     }
     else {
       setPageNum(pageNum => pageNum+28)
@@ -36,6 +38,8 @@ const MainListing = () => {
   const prevPage = () => {
     if (pageNum < 28) {
       setPageNum(0)
+      toast.error("Can't go beyond first page")
+
     }
     else {
       setPageNum(pageNum => pageNum-28)
