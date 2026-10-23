@@ -186,7 +186,9 @@ const CompleteDesc = () => {
                       <i class="ri-subtract-line"></i></button>
                     <p className="mx-4 font-bold">{orderQuantity}</p>
                     <button onClick={() => increaseQuantity(product.stock)} 
-                    className="cursor-pointer"><i class="ri-add-line"></i></button>
+                    className="cursor-pointer">
+                      <i class="ri-add-line"></i>
+                      </button>
                   </div>}
 
                   {(product.availabilityStatus==="In Stock" || product.availabilityStatus==="Low Stock") && <div className="flex justify-center items-center  bg-purple-700 text-white rounded-lg px-4 py-1 transition-all duration-150 hover:bg-purple-600 cursor-pointer">
